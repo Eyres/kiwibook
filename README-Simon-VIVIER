@@ -1,5 +1,0 @@
-Auteur : Simon Vivier
-
-En PHP il existe une méthode __call($name, $arguments) qui est appeler quand une methode appelée n'existe pas (ou est privée)  
-le $name contient le nom de la methode et $arguments qui contient les arguments. Cette méthode peut etre surchargée et est surchargée par
-doctrine pour que quand on essaie d'appeler findOneByChamp(valeur) on appelle findOneBy($champ=>$valeur)

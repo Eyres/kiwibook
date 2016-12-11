@@ -1,1 +1,0 @@
-<a href=kiwibook.php?action=logout id="logout">Deconnectez vous !</a>
