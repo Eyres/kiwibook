@@ -7,7 +7,7 @@
             <label>Password</label> : <input type="password" name="password" /><br>
             <label><input type="submit" name="submit" value="Valider"></label><br>
         </p>
-        </form>
+        </form><br>
 <?php
     } else {
 ?>
