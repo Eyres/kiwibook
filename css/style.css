@@ -1,0 +1,11 @@
+.bandeau {
+    background: #aaa;
+    width: 100%;
+    height: 20px;
+}
+.messageHeader{
+	font-size: 3.2vw;
+	height: 5%;
+	color: blue;
+
+}
