@@ -10,14 +10,7 @@
           <li><a href=kiwibook.php?action=showChats>Chat</a></li>
       </ul>
     <ul class="nav navbar-nav navbar-right">
-    <?php if(/*$_SESSION['logged'] === true*/true){ ?>
       <li> <?php include('loginForm.php'); ?> </li>
-      <li><a href="kiwibook.php?action=inscription">s'inscrire</a></li>
-    <?php } 
-     else {?>
-      <li><?php include('/profile.php'); ?></li>
-      <li><a href="kiwibook.php?action=logout">deconnecter</a></li>
-      <?php } ?>
     </ul>
   </div>
 </nav>
