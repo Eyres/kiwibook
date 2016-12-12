@@ -1,0 +1,6 @@
+# PhpStorm / Netbeans
+/.idea
+.idea/*
+nbproject/*
+.DS_Store
+*/.DS_Store
