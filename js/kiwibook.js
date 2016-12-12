@@ -16,8 +16,6 @@ $(document).ready(function () {
 function chatIni() {
     $('#chat-window').dialog({
         title: "Chat",
-        width: 500,
-        height: 500,
         autoOpen: false
     });
     $('#chat-button-window').click(function () {
