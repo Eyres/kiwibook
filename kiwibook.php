@@ -20,6 +20,7 @@ $context = context::getInstance();
 $context->init($nameApp);
 $menu_view = $nameApp."/view/fixedView/menu.php";
 $notif_view = $nameApp."/view/fixedView/notifBar.php";
+$chat_view = $nameApp."/view/fixedView/chat.php";
 
 $view = $context->executeAction($action, $_REQUEST); 
 
