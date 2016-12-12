@@ -1,17 +1,21 @@
-<?php
-    if (!isset($_SESSION['id'])) {
-?>
-        <form method="post" action="kiwibook.php?action=login"> 
-        <p>
-            <label>Pseudo</label> : <input type="text" name="pseudo" /><br>
-            <label>Password</label> : <input type="password" name="password" /><br>
-            <label><input type="submit" name="submit" value="Valider"></label><br>
-        </p>
-        </form><br>
-<?php
-    } else {
-?>
-    <a href=kiwibook.php?action=logout id="logout">Deconnectez vous !</a>
-<?php 
-    }
-?>
+<form method="post" action="kiwibook.php?action=login">
+    <div class="form-group">
+        <div class="row">
+            <label class="col-sm-3" >Pseudo:</label>
+            <div class = "col-sm-9">
+                <input type="text" name="pseudo" />
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-3" >Password:</label>
+            <div class = "col-sm-9">
+                <input type="password" name="password" />
+            </div>
+            <div class="row">
+                <label>
+                    <input type="submit" name="submit" value="Valider">
+                </label>
+            </div>
+        </div>
+    </div>
+</form>

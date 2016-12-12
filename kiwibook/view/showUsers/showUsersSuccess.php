@@ -2,7 +2,7 @@
 foreach ($context->data as $user) {
     ?>
     <div id="profil">
-        <img id="avatar" src=<?php echo $user->avatar ?>>
+        <img id="avatar" <noscript> src=<?php echo $user->avatar ?>>
         <a href="?action=profil&id=<?php echo $user->id ?>">
             <p id="identite"><?php echo $user->prenom." ".$user->nom ?></p>
         </a>
