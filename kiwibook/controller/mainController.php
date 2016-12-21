@@ -40,25 +40,14 @@ class mainController
         return $context->jsonSerialize();
     }
 
-    //TODO recuperer les messages de l'utilisateur courrant
     public static function showMessage($request, $context)
     {
         if ($context::getSessionAttribute('id')) {
             $messageTable = messageTable::getInstance();
-            $chatTable = chatTable::getInstance();
-            $utilisateurTable = utilisateurTable::getInstance();
-            $postTable = postTable::getInstance();
 
             $messages = $messageTable->getLastMessages();
-            $messagesList = array();
-            foreach ($messages as $key => $message) {
-                $messagesList[$message->id] = array();
-                $messagesList[$message->id]['message'] = $message;
-                $messagesList[$message->id]['destinataire'] = $utilisateurTable->getUserByID($message->destinataire);
-                $messagesList[$message->id]['emetteur'] = $utilisateurTable->getUserByID($message->emetteur);
-                $messagesList[$message->id]['post'] = $postTable->getPostByID($message->post);
-            }
-            $context->messages = $messagesList;
+
+            $context->__set('message', $messages);
 
             return Context::SUCCESS;
         }
