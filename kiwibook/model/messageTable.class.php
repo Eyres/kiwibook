@@ -44,7 +44,7 @@ class messageTable
     {
         return $this->messageRepository->findAll();
     }
-
+//todo mettre une limit pour pas charger toutes la bdd et faire une pagination pour la page..
     public function getLastMessages()
     {
         return $this->messageRepository->findAll([], ['id' => 'DESC']);
