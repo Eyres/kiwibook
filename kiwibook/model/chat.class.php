@@ -13,13 +13,13 @@ class chat
     public $id;
 
     /**
-     * @ManyToOne(targetEntity="ifacebook\model\Utilisateur\Utilisateur")
+     * @ManyToOne(targetEntity="utilisateur")
      * @JoinColumn(nullable=false, name="emetteur", referencedColumnName="id")
      */
     public $emetteur;
 
     /**
-     * @OneToOne(targetEntity="ifacebook\model\Post\Post")
+     * @OneToOne(targetEntity="post")
      * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
      */
     public $post;
