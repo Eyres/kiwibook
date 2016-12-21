@@ -16,7 +16,7 @@ class postTable
         $this->postRepository = $this->em->getRepository('post');
     }
 
-    public function getInstance()
+    public static function getInstance()
     {
         if (is_null(self::$_instance)) {
             self::$_instance = new postTable();
