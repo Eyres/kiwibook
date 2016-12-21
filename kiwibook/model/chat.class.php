@@ -1,29 +1,29 @@
 <?php
 
-/** 
+/**
  * @Entity
  * @Table(name="fredouil.chat")
- *
- * @OneToOne(targetEntity="post")
- * @JoinColumn(name="post", referencedColumnName="id")
- *
- * @ManyToOne(targetEntity="utilisateur")
- * @JoinColumn(name="emetteur", referencedColumnName="id")
- * 
  */
-class chat {
+class chat
+{
 
-	/** @Id @Column(type="integer")
-	 *  @GeneratedValue
-	 */ 
-	public $id;
+    /** @Id @Column(type="integer")
+     * @GeneratedValue
+     */
+    public $id;
 
-	/** @Column(type="integer") */ 
-	public $emetteur;
-		
-	/** @Column(type="integer") */ 
-	public $post;
-	
+    /**
+     * @ManyToOne(targetEntity="ifacebook\model\Utilisateur\Utilisateur")
+     * @JoinColumn(nullable=false, name="emetteur", referencedColumnName="id")
+     */
+    public $emetteur;
+
+    /**
+     * @OneToOne(targetEntity="ifacebook\model\Post\Post")
+     * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
+     */
+    public $post;
+
 }
 
 ?>

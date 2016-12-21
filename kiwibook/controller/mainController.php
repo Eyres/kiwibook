@@ -24,7 +24,6 @@ class mainController
                 $context->message = "Vous n'avez pas été identifié";
 
                 return context::ERROR;
-
             }
         } else {
             $context->message = "Premiere connexion";
@@ -41,7 +40,7 @@ class mainController
         return $context->jsonSerialize();
     }
 
-//TODO recuperer les messages de l'utilisateur courrant
+    //TODO recuperer les messages de l'utilisateur courrant
     public static function showMessage($request, $context)
     {
         if ($context::getSessionAttribute('id')) {

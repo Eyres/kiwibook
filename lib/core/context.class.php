@@ -31,7 +31,6 @@ class context implements JsonSerializable
     public function init($name)
     {
         $this->name = $name;
-
     }
 
     public function getLayout()
@@ -57,7 +56,6 @@ class context implements JsonSerializable
         }
 
         return mainController::$action($request, $this);
-
     }
 
     public function getSessionAttribute($attribute)

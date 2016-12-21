@@ -1,6 +1,6 @@
 <?php
 
-define('HOST', 'pedago02a.univ-avignon.fr');
+define('HOST', 'pedago.univ-avignon.fr');
 define('USER', 'uapv1401701');
 define('PASS', 'rGPRbx');
 define('DB', 'etd');

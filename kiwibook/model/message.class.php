@@ -4,18 +4,6 @@
  * @Entity
  * @Table(name="fredouil.message")
  *
- * @OneToOne(targetEntity="post")
- * @JoinColumn(name="post", referencedColumnName="id")
- *
- * @OneToOne(targetEntity="utilisateur")
- * @JoinColumn(name="parent", referencedColumnName="id")
- * 
- * @OneToOne(targetEntity="utilisateur")
- * @JoinColumn(name="emetteur", referencedColumnName="id")
- *
- * @ManyToOne(targetEntity="utilisateur")
- * @JoinColumn(name="destinataire", referencedColumnName="id")
- *
  */
 class message {
 
@@ -24,19 +12,37 @@ class message {
 	 */ 
 	public $id;
 
-	/** @Column(type="integer") */ 
-	public $emetteur;
-        
-    /** @Column(type="integer") */ 
-	public $destinataire;
-        
-    /** @Column(type="integer") */ 
+    /**
+     * @ManyToOne(targetEntity="ifacebook\model\Utilisateur\Utilisateur")
+     * @JoinColumn(nullable=false, name="emetteur", referencedColumnName="id")
+     */
+    public $emetteur;
+
+    /**
+     * @ManyToOne(targetEntity="ifacebook\model\Utilisateur\Utilisateur")
+     * @JoinColumn(nullable=false, name="destinataire", referencedColumnName="id")
+     * @var Utilisateur $destinataire
+     */
+    public $destinataire;
+
+    /**
+     * @OneToOne(targetEntity="ifacebook\model\Utilisateur\Utilisateur")
+     * @JoinColumn(nullable=true, name="parent", referencedColumnName="id")
+     * @var Utilisateur $parent
+     */
 	public $parent;
-		
-	/** @Column(type="integer") */ 
+
+    /**
+     * @OneToOne(targetEntity="ifacebook\model\Post\Post")
+     * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
+     * @var Post $post
+     */
 	public $post;
-        
-    /** @Column(type="integer") */ 
+
+    /**
+     * @Column(type="integer")
+     * @var int $aime
+     */
 	public $aime;
 	
 }
