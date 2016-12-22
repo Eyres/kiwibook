@@ -1,7 +1,7 @@
 <?php
 
 //nom de l'application
-$nameApp = "kiwibook";
+$nameApp = "monApplication";
 
 // Inclusion des classes et librairies
 require_once 'lib/core.php';
@@ -18,11 +18,8 @@ session_start();
 
 $context = context::getInstance();
 $context->init($nameApp);
-$menu_view = $nameApp."/view/fixedView/menu.php";
-$notif_view = $nameApp."/view/fixedView/notifBar.php";
-$chat_view = $nameApp."/view/fixedView/chat.php";
 
-$view = $context->executeAction($action, $_REQUEST); 
+$view=$context->executeAction($action, $_REQUEST);
 
 //traitement des erreurs de bases, reste a traiter les erreurs d'inclusion
 if($view===false){
@@ -32,12 +29,8 @@ if($view===false){
 
 //inclusion du layout qui va lui meme inclure le template view
 elseif($view!=context::NONE){
-
-	$template_view=$nameApp."/view/".$action."/".$action.$view.".php";
+	$template_view=$nameApp."/view/".$action.$view.".php";
 	include($nameApp."/view/".$context->getLayout().".php");
-}
-else{
-    echo $view;
 }
 
 ?>
