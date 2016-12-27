@@ -1,20 +1,29 @@
 <?php
-/*
- * All doc on :
- * Toutes les actions disponibles dans l'application 
- *
- */
+
 
 class mainController{
 
-public static function helloWorld($request,$context){
-	$context->mavariable="hello world";
-	return context::SUCCESS;
+public static function login($request,$context){
+    if (array_key_exists('form', $request)) {
+        $login = $request['form']['login'];
+        $pass = $request['form']['pass'];
+        //Recup l'utilisateur avec get...
+        $em = new utilisateurTable();
+        $user = $em->getUserByLoginAndPass($login,$pass);
+        if (false === $user) {
+            $context->notification = 'Veuillez vérifier votre mot de passe et votre identifiant.' ;
+
+            return Context::ERROR;
+        }
+        $context->notification= 'Bonjour ' . $user->getPrenom();
+        Context::setSessionAttribute('id', $user->getId());
+
+        header('location: ?action=index');
+    }
+    return Context::SUCCESS;
 }
 
-
 public static function index($request,$context){
-		
 	return context::SUCCESS;
 }
 

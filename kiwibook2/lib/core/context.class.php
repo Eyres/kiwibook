@@ -39,7 +39,7 @@ class context{
 	}
 
 	public function executeAction($action,$request){
-		$this->layout="layout";
+		$this->layout="layout/layout";
 		if(!method_exists('mainController',$action))
 		  return false;
 		

@@ -25,12 +25,10 @@ $view=$context->executeAction($action, $_REQUEST);
 if($view===false){
 	echo "Une grave erreur s'est produite, il est probable que l'action ".$action." n'existe pas...";
 	die;
-}
-
-//inclusion du layout qui va lui meme inclure le template view
-elseif($view!=context::NONE){
-	$template_view=$nameApp."/view/".$action.$view.".php";
+} elseif($view != context::NONE) {
+	$template_view = $nameApp."/view/".$action."/".$action.$view.".php";
 	include($nameApp."/view/".$context->getLayout().".php");
+} else {
+	echo $view;
 }
-
 ?>

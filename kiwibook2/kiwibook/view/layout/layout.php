@@ -6,6 +6,7 @@
    
 </head>
 <body>
+	<?php include('bandeauNotif.php'); ?>
 
 	<?php include($template_view); ?>
     

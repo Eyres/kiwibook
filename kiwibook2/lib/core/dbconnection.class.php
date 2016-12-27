@@ -1,9 +1,10 @@
 <?php
 
-define ('HOST', 'pedago02a.univ-avignon.fr') ;
-define ('USER', ''  ) ;
-define ('PASS', '' ) ;
-define ('DB', 'etd' ) ;
+define('HOST', 'pedago.univ-avignon.fr');
+define('USER', 'uapv1401701');
+define('PASS', 'rGPRbx');
+define('DB', 'etd');
+define('DRIVER', 'pdo_pgsql');
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -14,7 +15,7 @@ private static $instance=null, $entityManager;
 private $error=null ;
 
 private function __construct(){
-	$config = Setup::createAnnotationMetadataConfiguration(array("../../monApplication/model/"), true);
+	$config = Setup::createAnnotationMetadataConfiguration(array("../../kiwibook/model/"), true);
 
 	$param = array(
 	'dbname' => DB,
