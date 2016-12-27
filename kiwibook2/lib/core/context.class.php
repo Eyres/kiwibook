@@ -32,8 +32,8 @@ class context{
 
 	public function setLayout($layout){
 		$this->layout=$layout;
-	}	
-	
+	}
+
 	public function redirect($url){
 		header("location:".$url); 
 	}

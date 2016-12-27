@@ -21,7 +21,6 @@ $context->init($nameApp);
 
 $view=$context->executeAction($action, $_REQUEST);
 
-//traitement des erreurs de bases, reste a traiter les erreurs d'inclusion
 if($view===false){
 	echo "Une grave erreur s'est produite, il est probable que l'action ".$action." n'existe pas...";
 	die;

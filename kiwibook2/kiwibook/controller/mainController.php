@@ -18,12 +18,13 @@ public static function login($request,$context){
         $context->notification= 'Bonjour ' . $user->getPrenom();
         Context::setSessionAttribute('id', $user->getId());
 
-        header('location: ?action=index');
+        $context->redirect('?action=index');
     }
     return Context::SUCCESS;
 }
 
 public static function index($request,$context){
+    //$context->notification= 'Bonjour';
 	return context::SUCCESS;
 }
 

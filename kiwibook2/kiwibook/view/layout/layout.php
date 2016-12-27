@@ -7,7 +7,7 @@
 </head>
 <body>
 	<?php include('bandeauNotif.php'); ?>
-
+	<?php echo $context->notification;?>
 	<?php include($template_view); ?>
     
 </body>
