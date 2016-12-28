@@ -6,6 +6,7 @@ $nameApp = "kiwibook";
 // Inclusion des classes et librairies
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';
+require_once $nameApp.'/controller/ajaxController.php';
 
 
 //action par défaut

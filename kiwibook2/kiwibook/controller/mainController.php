@@ -15,7 +15,6 @@ public static function login($request,$context){
 
             return Context::ERROR;
         }
-        $context->notification= 'Bonjour ' . $user->getPrenom();
         Context::setSessionAttribute('id', $user->getId());
 
         $context->redirect('?action=index');
@@ -24,7 +23,6 @@ public static function login($request,$context){
 }
 
 public static function index($request,$context){
-    //$context->notification= 'Bonjour';
 	return context::SUCCESS;
 }
 

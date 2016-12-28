@@ -1,7 +1,7 @@
+<?php if ($context->notification) { ?>
 <div id="bandeauNotif">
-
-        <div>
-            <?php echo $context->getNotification(); ?>
-        </div>
-
+    <div>
+        <?php echo $context->notification; ?>
+    </div>
 </div>
+<?php } ?>
