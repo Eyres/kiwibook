@@ -4,7 +4,7 @@
  * @Entity
  * @Table(name="fredouil.chat")
  *
- * @author: Loic TORO
+ * @author
  */
 class chat
 {
