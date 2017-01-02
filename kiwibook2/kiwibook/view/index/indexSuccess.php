@@ -1,2 +1,8 @@
-C'est l'action par défaut ! 
-<a href=?action=logout>Deconnectez vous !</a>
+<?php if($context->getSessionAttribute('id')) {?>
+FUTUR LIEU DE RéSIDENCE DU PROFIL !
+
+<?php } else { ?>
+
+Bienvenue, connectez vous !
+
+<?php } ?>

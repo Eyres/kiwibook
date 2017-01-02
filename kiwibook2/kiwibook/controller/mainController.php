@@ -8,16 +8,19 @@ class mainController{
     }
 
     public static function login($request,$context){
-        if (array_key_exists('form', $request)) {
-            $login = $request['form']['login'];
-            $pass = $request['form']['pass'];
+        if (!empty($_REQUEST['pseudo']) || !empty($_REQUEST['password'])) {
+            $login = $_REQUEST['pseudo'];
+            $pass = $_REQUEST['password'];
+
             $em = new utilisateurTable();
             $user = $em->getUserByLoginAndPass($login,$pass);
             if (false === $user) {
                 $context->notification = 'Veuillez vérifier votre mot de passe et votre identifiant.' ;
 
                 return Context::ERROR;
+
             }
+
             Context::setSessionAttribute('id', $user->getId());
 
             $context->redirect('?action=index');

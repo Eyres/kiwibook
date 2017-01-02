@@ -48,7 +48,7 @@ class utilisateurTable
 	}
 
 // @author simon vivier
-	private function __construct()
+	public function __construct()
 	{
 		$this->em = dbconnection::getInstance()->getEntityManager();
 		$this->utilisateurRepository = $this->em->getRepository('utilisateur');
