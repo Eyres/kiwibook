@@ -51,7 +51,6 @@ function chatIni() {
 function appendAmis(messages) {
     for (var i = 0; i < messages.length; i++) {
         var tmp = JSON.parse(messages[i]);
-        console.log(tmp);
         var string = '<div id="profil">'
             + '<a href="?action=profil&id=' + tmp.id + '">'
             + '<div class="well">'
@@ -74,7 +73,7 @@ function appendAmis(messages) {
             + '</div>'
             + '</a>'
             + '</div>';
-        $('#new-amis').prepend(string);
+        $('#new-amis').append(string);
     }
 }
 
