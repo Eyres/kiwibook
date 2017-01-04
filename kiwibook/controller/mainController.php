@@ -36,8 +36,7 @@ class mainController
         if ($context::getSessionAttribute('id')) {
             $messageTable = new messageTable();
 
-            $messages = $messageTable->getMessages(10, 0);
-            $context->__set('message', $messages);
+            $context->__set('message', $messageTable->getMessages(10, 0));
 
             return Context::SUCCESS;
         }

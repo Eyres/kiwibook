@@ -11,23 +11,24 @@ require_once $nameApp.'/controller/ajaxController.php';
 //action par défaut
 $action = "index";
 
-if(key_exists("action", $_REQUEST))
-	$action =  $_REQUEST['action'];
+if (key_exists("action", $_REQUEST)) {
+    $action = $_REQUEST['action'];
+}
 
 session_start();
 
 $context = context::getInstance();
 $context->init($nameApp);
 
-$view=$context->executeAction($action, $_REQUEST);
+$view = $context->executeAction($action, $_REQUEST);
 
-if($view==false){
-	echo "Une grave erreur s'est produite, il est probable que l'action ".$action." n'existe pas...";
-	die;
-} elseif(context::SUCCESS == $view || context::ERROR == $view) {
-	$template_view = $nameApp."/view/".$action."/".$action.$view.".php";
-	include($nameApp."/view/".$context->getLayout().".php");
+if ($view == false) {
+    echo "Une grave erreur s'est produite, il est probable que l'action ".$action." n'existe pas...";
+    die;
+} elseif (context::SUCCESS == $view || context::ERROR == $view) {
+    $template_view = $nameApp."/view/".$action."/".$action.$view.".php";
+    include($nameApp."/view/".$context->getLayout().".php");
 } else {
-	echo $view;
+    echo $view;
 }
 ?>
