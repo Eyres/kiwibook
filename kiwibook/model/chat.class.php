@@ -9,9 +9,7 @@
 class chat
 {
 
-    /** @Id @Column(type="integer")
-     * @GeneratedValue
-     */
+    /** @Id @Column(type="integer") @GeneratedValue */
     protected $id;
 
     /**
@@ -25,6 +23,7 @@ class chat
      * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
      */
     protected $post;
+
     /**
      * @return mixed
      */

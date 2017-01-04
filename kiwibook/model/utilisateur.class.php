@@ -1,189 +1,188 @@
 <?php
 
-/** 
+/**
  * @Entity
  * @Table(name="fredouil.utilisateur")
  */
-class utilisateur{
+class utilisateur
+{
 
-	/** @Id @Column(type="integer")
-	 *  @GeneratedValue
-	 */ 
-	protected $id;
+    /** @Id @Column(type="integer") @GeneratedValue */
+    protected $id;
 
-	/** @Column(type="string", length=45) */ 
-	protected $identifiant;
-		
-	/** @Column(type="string", length=45) */ 
-	protected $pass;
+    /** @Column(type="string", length=45) */
+    protected $identifiant;
 
-	/** @Column(type="string", length=45) */ 
-	protected $nom;
+    /** @Column(type="string", length=45) */
+    protected $pass;
 
-	/** @Column(type="string", length=45) */ 
-	protected $prenom;
+    /** @Column(type="string", length=45) */
+    protected $nom;
 
-	/** @Column(type="string", length=100) */ 
-	protected $statut;
+    /** @Column(type="string", length=45) */
+    protected $prenom;
 
-	/** @Column(type="string", length=200) */ 
-	protected $avatar;
+    /** @Column(type="string", length=100) */
+    protected $statut;
 
-	/** @Column(type="datetime") */ 
-	protected $date_de_naissance;
+    /** @Column(type="string", length=200) */
+    protected $avatar;
 
-	/**
-	 * @return mixed
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    /** @Column(type="datetime") */
+    protected $date_de_naissance;
 
-	/**
-	 * @param mixed $id
-	 * @return utilisateur
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $id
+     * @return utilisateur
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
-	/**
-	 * @return mixed
-	 */
-	public function getIdentifiant()
-	{
-		return $this->identifiant;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $identifiant
-	 * @return utilisateur
-	 */
-	public function setIdentifiant($identifiant)
-	{
-		$this->identifiant = $identifiant;
+    /**
+     * @return mixed
+     */
+    public function getIdentifiant()
+    {
+        return $this->identifiant;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $identifiant
+     * @return utilisateur
+     */
+    public function setIdentifiant($identifiant)
+    {
+        $this->identifiant = $identifiant;
 
-	/**
-	 * @return mixed
-	 */
-	public function getPass()
-	{
-		return $this->pass;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $pass
-	 * @return utilisateur
-	 */
-	public function setPass($pass)
-	{
-		$this->pass = $pass;
+    /**
+     * @return mixed
+     */
+    public function getPass()
+    {
+        return $this->pass;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $pass
+     * @return utilisateur
+     */
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
 
-	/**
-	 * @return mixed
-	 */
-	public function getNom()
-	{
-		return $this->nom;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $nom
-	 * @return utilisateur
-	 */
-	public function setNom($nom)
-	{
-		$this->nom = $nom;
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $nom
+     * @return utilisateur
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
 
-	/**
-	 * @return mixed
-	 */
-	public function getPrenom()
-	{
-		return $this->prenom;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $prenom
-	 * @return utilisateur
-	 */
-	public function setPrenom($prenom)
-	{
-		$this->prenom = $prenom;
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $prenom
+     * @return utilisateur
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
 
-	/**
-	 * @return mixed
-	 */
-	public function getStatut()
-	{
-		return $this->statut;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $statut
-	 * @return utilisateur
-	 */
-	public function setStatut($statut)
-	{
-		$this->statut = $statut;
+    /**
+     * @return mixed
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $statut
+     * @return utilisateur
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
 
-	/**
-	 * @return mixed
-	 */
-	public function getAvatar()
-	{
-		return $this->avatar;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $avatar
-	 * @return utilisateur
-	 */
-	public function setAvatar($avatar)
-	{
-		$this->avatar = $avatar;
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
 
-		return $this;
-	}
+    /**
+     * @param mixed $avatar
+     * @return utilisateur
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
 
-	/**
-	 * @return mixed
-	 */
-	public function getDateDeNaissance()
-	{
-		return $this->date_de_naissance;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param mixed $date_de_naissance
-	 * @return utilisateur
-	 */
-	public function setDateDeNaissance($date_de_naissance)
-	{
-		$this->date_de_naissance = $date_de_naissance;
+    /**
+     * @return mixed
+     */
+    public function getDateDeNaissance()
+    {
+        return $this->date_de_naissance;
+    }
 
-		return $this;
-	}
-	
+    /**
+     * @param mixed $date_de_naissance
+     * @return utilisateur
+     */
+    public function setDateDeNaissance($date_de_naissance)
+    {
+        $this->date_de_naissance = $date_de_naissance;
+
+        return $this;
+    }
+
 }
 
 ?>

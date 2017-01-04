@@ -7,10 +7,11 @@
  */
 class message {
 
-	/** @Id @Column(type="integer")
-	 *  @GeneratedValue
-	 */ 
+	/** @Id @Column(type="integer") @GeneratedValue */
 	protected $id;
+
+    /** @Column(type="integer") */
+    protected $aime;
 
     /**
      * @ManyToOne(targetEntity="utilisateur")
@@ -35,11 +36,6 @@ class message {
      * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
      */
 	protected $post;
-
-    /**
-     * @Column(type="integer")
-     */
-	protected $aime;
 
     /**
      * @return mixed

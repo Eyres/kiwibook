@@ -6,24 +6,16 @@
  */
 class post {
 
-	/** @Id @Column(type="integer")
-	 *  @GeneratedValue
-	 */ 
+	/** @Id @Column(type="integer") @GeneratedValue */
 	protected $id;
 
-    /**
-     * @Column(type="string", length=2000)
-     */
+    /** @Column(type="string", length=2000) */
 	protected $texte;
 
-    /**
-     * @Column(type="datetime")
-     */
+    /** @Column(type="datetime") */
 	protected $date;
 
-    /**
-     * @Column(type="string", length=200)
-     */
+    /** @Column(type="string", length=200) */
 	protected $image;
 
     /**
