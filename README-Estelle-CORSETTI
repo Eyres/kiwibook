@@ -1,6 +1,0 @@
-
-README : Estelle CORSETTI
-
-Les méthodes findOneByidentifiant() et findByidentifiant() peuvent être appelées et executées sur un repository
-grâce aux méthodes magiques. PHP est capable de voir que le champs identifiant fait partie de la table utilisateur et que
-la recherche doit se faire dessus. Il est donc capable de créer la fonction seul.

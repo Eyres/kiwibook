@@ -6,23 +6,13 @@
 
 class postTable
 {
-    private static $_instance = null;
     public $postRepository;
     public $em;
 
-    private function __construct()
+    public function __construct()
     {
         $this->em = dbconnection::getInstance()->getEntityManager();
         $this->postRepository = $this->em->getRepository('post');
-    }
-
-    public static function getInstance()
-    {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new postTable();
-        }
-
-        return self::$_instance;
     }
 
     public function getPostByID($ID)

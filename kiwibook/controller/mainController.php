@@ -1,136 +1,44 @@
 <?php
 
+
 class mainController
 {
+
     public static function index($request, $context)
     {
-        $context->message = null;
-
         return context::SUCCESS;
     }
 
     public static function login($request, $context)
     {
-        if (!empty($_POST['pseudo']) || !empty($_POST['password'])) {
-            $utilisateurTable = utilisateurTable::getInstance();
-            $user = $utilisateurTable->getUserByLoginAndPass($_POST['pseudo'], $_POST['password']);
-            if ($user) {
-                $context->message = "Bonjour ".$_POST['pseudo']."!";
-                Context::setSessionAttribute('id', $user->id);
-                $context->user = $user;;
+        if (!empty($_REQUEST['pseudo']) || !empty($_REQUEST['password'])) {
+            $login = $_REQUEST['pseudo'];
+            $pass = $_REQUEST['password'];
 
-                return context::SUCCESS;
-            } else {
-                $context->message = "Vous n'avez pas été identifié";
+            $em = new utilisateurTable();
+            $user = $em->getUserByLoginAndPass($login, $pass);
+            if (false === $user) {
+                $context->notification = 'Veuillez vérifier votre mot de passe et votre identifiant.';
 
-                return context::ERROR;
+                return Context::ERROR;
             }
-        } else {
-            $context->message = "Premiere connexion";
 
-            return context::ERROR;
+            Context::setSessionAttribute('id', $user->getId());
+
+            $context->redirect('?action=index');
         }
+
+        return Context::SUCCESS;
     }
 
-    public static function logout($request, $context)
-    {
-        session_destroy();
-        $context->message = "Vous êtes bien déconnecté";
-
-        return $context->jsonSerialize();
-    }
-
-    public static function showMessage($request, $context)
+    public static function mur($request, $context)
     {
         if ($context::getSessionAttribute('id')) {
-            $messageTable = messageTable::getInstance();
+            $messageTable = new messageTable();
 
             $messages = $messageTable->getLastMessages();
 
             $context->__set('message', $messages);
-
-            return Context::SUCCESS;
-        }
-    }
-
-    public static function showUsers($request, $context)
-    {
-        if ($context::getSessionAttribute('id')) {
-
-            $utilisateurTable = utilisateurTable::getInstance();
-            $context->data = $utilisateurTable->getUsers();
-
-            return Context::SUCCESS;
-        }
-    }
-
-    public static function showChats($request, $context)
-    {
-        if ($context::getSessionAttribute('id')) {
-
-            $chatTable = chatTable::getInstance();
-            $utilisateurTable = utilisateurTable::getInstance();
-            $postTable = postTable::getInstance();
-
-            $chats = $chatTable->getLastChats();
-            $chatsList = array();
-            foreach ($chats as $key => $chat) {
-                $chatsList[$chat->id] = array();
-                $chatsList[$chat->id]['emetteur'] = $utilisateurTable->getUserByID($chat->emetteur);
-                $chatsList[$chat->id]['post'] = $postTable->getPostByID($chat->post);
-            }
-            $context->chats = $chatsList;
-
-            return Context::SUCCESS;
-        }
-    }
-
-    public static function profil($request, $context)
-    {
-        if ($context::getSessionAttribute('id')) {
-
-            if (array_key_exists('id', $request)) {
-                $utilisateurTable = utilisateurTable::getInstance();
-                $context->data = $utilisateurTable->getUserByID($request['id']);
-                $context->userId = $request['id'];
-            } else {
-                $utilisateurTable = utilisateurTable::getInstance();
-                $context->data = $utilisateurTable->getUserByID(Context::getSessionAttribute('id'));
-                $context->userId = Context::getSessionAttribute('id');
-            }
-
-            return Context::SUCCESS;
-        }
-    }
-
-    public static function editProfil($request, $context)
-    {
-        if ($context::getSessionAttribute('id')) {
-
-            if (array_key_exists('statut', $request) && $_FILES !== null) {
-                $utilisateurTable = utilisateurTable::getInstance();
-                $user = $utilisateurTable->getUserByID($context::getSessionAttribute('id'));
-                if ($request['statut'] !== '') {
-                    $user->statut = $request['statut'];
-                }
-                if ($_FILES['avatar']['error'] === 0 && $_FILES['avatar']['name'] !== "") {
-                    $image = 'https://pedago.univ-avignon.fr/~uapv1401701/kiwibook/image/'.$_FILES['avatar']['name'];
-                    $folder = 'image/';
-                    $tmp = time();
-                    $infosFichier = pathinfo($_FILES['avatar']['name']);
-                    $extensionUpload = $infosFichier['extension'];
-                    $extensionsAutorisees = array('jpg', 'jpeg', 'gif', 'png');
-                    if (in_array($extensionUpload, $extensionsAutorisees)) {
-                        $image .= $_FILES['avatar']['name'].$tmp.'.'.$extensionUpload;
-                        move_uploaded_file(
-                            $_FILES['avatar']['tmp_name'],
-                            $folder.$_FILES['avatar']['name'].$tmp.'.'.$extensionUpload
-                        );
-                        $user->avatar = $image;
-                    }
-                }
-                $utilisateurTable->update($user);
-            }
 
             return Context::SUCCESS;
         }

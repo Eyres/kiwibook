@@ -6,23 +6,13 @@
 
 class chatTable
 {
-    private static $_instance = null;
     public $em;
     public $chatsRepository;
 
-    private function __construct()
+    public function __construct()
     {
         $this->em = dbconnection::getInstance()->getEntityManager();
         $this->chatsRepository = $this->em->getRepository('chat');
-    }
-
-    public static function getInstance()
-    {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new chatTable();
-        }
-
-        return self::$_instance;
     }
 
     /**

@@ -1,4 +1,8 @@
-<div id="Head">
-    Bienvenue sur l'index !
-    <a href=kiwibook.php?action=login>Connectez vous !</a>
-</div>
+<?php if($context->getSessionAttribute('id')) {?>
+FUTUR LIEU DE RéSIDENCE DU PROFIL !
+
+<?php } else { ?>
+
+Bienvenue, connectez vous !
+
+<?php } ?>
