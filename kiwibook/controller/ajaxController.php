@@ -30,5 +30,17 @@ class AjaxController
 
         return $context->jsonSerialize();
     }
+    /**
+     * @param $request
+     * @param Context $context
+     * @return mixed
+     */
+    public function loadAmis($request, $context)
+    {
+        $amisTable = new utilisateurTable();
+        $context->__set('amis', $amisTable->getUsers(10, $request['offset']));
+
+        return $context->jsonSerialize();
+    }
 
 }

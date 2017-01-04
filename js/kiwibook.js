@@ -22,6 +22,17 @@ $(document).ready(function () {
             }
         });
     });
+    var offset2 = 10;
+    $("#plus-de-amis").click(function () {
+        $.ajax({
+            dataType: 'json',
+            url: '?action=loadAmis&offset=' + offset2,
+            success: function (reponse) {
+                offset2 += 10;
+                appendAmis(reponse.data.amis);
+            }
+        });
+    });
 });
 
 function chatIni() {
@@ -35,6 +46,35 @@ function chatIni() {
         $("#chat-window").dialog("open");
         $("#chat-window").toggleClass('hidden');
     });
+}
+
+function appendAmis(messages) {
+    for (var i = 0; i < messages.length; i++) {
+        var tmp = JSON.parse(messages[i]);
+        console.log(tmp);
+        var string = '<div id="profil">'
+            + '<a href="?action=profil&id=' + tmp.id + '"'
+            + 'title="vers profil de ' + tmp.prenom + ' ' + tmp.nom + '">'
+            + '<div class="well">'
+            + '<div class="row">'
+            + '<div class="col-md-2 hidden-xs">';
+        if (tmp.avatar) {
+            string += '<img src=' + tmp.avatar + ' alt="avatar" width="50" height="50"/>'
+        } else {
+            string += '<img class="img-responsive" src="images/defaut.png" width="50" height="50">';
+        }
+        string += '</div>'
+            + '<div class="col-md-10 col-xs-12">'
+            + '<p id="birthday">' + tmp.date_de_naissance.date + ' </p>'
+            + '<p id="statut">' + tmp.statut ? tmp.statut : "Pas de Status" + ' </p>'
+            + '<p id="identite">' + tmp.prenom + ' ' + tmp.nom + ' </p>'
+            + '</div>'
+            + '</div>'
+            + '</div>'
+            + '</a>'
+            + '</div>';
+        $('#new-amis').prepend(string);
+    }
 }
 
 function appendMessages(messages) {

@@ -42,4 +42,15 @@ class mainController
         }
     }
 
+    public static function amis($request, $context)
+    {
+        if ($context::getSessionAttribute('id')) {
+            $amisTable = new utilisateurTable();
+
+            $context->__set('amis', $amisTable->getUsers(10, 0));
+
+            return Context::SUCCESS;
+        }
+    }
+
 }
