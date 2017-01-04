@@ -18,5 +18,17 @@ class AjaxController
 
         return $context->jsonSerialize();
     }
+    /**
+     * @param $request
+     * @param Context $context
+     * @return mixed
+     */
+    public function loadMessage($request, $context)
+    {
+        $messageTable = new messageTable();
+        $context->__set('messages', $messageTable->getMessages(10, $request['offset']));
+
+        return $context->jsonSerialize();
+    }
 
 }

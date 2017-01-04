@@ -70,5 +70,6 @@
         </div>
     </div>
 <?php } ?>
+<div id="new-message"></div>
 
-<button role="button" class="btn btn-info" id="plus-de-post">suivant...</button>
+<button role="button" class="btn btn-info btn-block center-block" id="plus-de-post">suivant...</button>
