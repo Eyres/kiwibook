@@ -53,8 +53,7 @@ function appendAmis(messages) {
         var tmp = JSON.parse(messages[i]);
         console.log(tmp);
         var string = '<div id="profil">'
-            + '<a href="?action=profil&id=' + tmp.id + '"'
-            + 'title="vers profil de ' + tmp.prenom + ' ' + tmp.nom + '">'
+            + '<a href="?action=profil&id=' + tmp.id + '">'
             + '<div class="well">'
             + '<div class="row">'
             + '<div class="col-md-2 hidden-xs">';
@@ -66,8 +65,10 @@ function appendAmis(messages) {
         string += '</div>'
             + '<div class="col-md-10 col-xs-12">'
             + '<p id="birthday">' + tmp.date_de_naissance.date + ' </p>'
-            + '<p id="statut">' + tmp.statut ? tmp.statut : "Pas de Status" + ' </p>'
-            + '<p id="identite">' + tmp.prenom + ' ' + tmp.nom + ' </p>'
+        if (tmp.statut) {
+            string += '<p id="statut">' + tmp.statut + ' </p>';
+        }
+        string += '<p id="identite">' + tmp.prenom + ' ' + tmp.nom + ' </p>'
             + '</div>'
             + '</div>'
             + '</div>'
