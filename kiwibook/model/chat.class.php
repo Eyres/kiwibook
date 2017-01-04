@@ -6,7 +6,7 @@
  *
  * @author
  */
-class chat
+class chat implements JsonSerializable
 {
 
     /** @Id @Column(type="integer") @GeneratedValue */
@@ -23,6 +23,11 @@ class chat
      * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
      */
     protected $post;
+
+    public function jsonSerialize()
+    {
+        return json_encode(get_object_vars($this));
+    }
 
     /**
      * @return mixed

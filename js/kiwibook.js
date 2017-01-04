@@ -13,7 +13,6 @@ $(document).ready(function () {
 
     var offset = 10;
     $("#plus-de-post").click(function () {
-        console.log('test');
         $.ajax({
             dataType: 'json',
             url: '?action=loadMessage&offset=' + offset,
@@ -39,58 +38,58 @@ function chatIni() {
 }
 
 function appendMessages(messages) {
-        console.log(messages);
-    for (var i = 0; i < messages.lenght; i++) {
+    for (var i = 0; i < messages.length; i++) {
         var tmp = JSON.parse(messages[i]);
-        console.log(tmp);
-
-
-        $('#new-message').prepend(
-            '<div class="wrapper">'
+        tmp.destinataire = JSON.parse(tmp.destinataire);
+        tmp.emetteur = JSON.parse(tmp.emetteur);
+        tmp.parent = JSON.parse(tmp.parent);
+        tmp.post = JSON.parse(tmp.post);
+        var string = '<div class="wrapper">'
             + '<div class="row">'
-            + '<div class="col-sm-3">'
-            + '<?php if (!empty($message->getEmetteur()->getAvatar())) { ?>'
-            + '<img class="img-responsive" src="<?php echo $message->getEmetteur()->getAvatar(); ?>">'
-            + '<?php } else { ?>'
-            + '<img class="img-responsive" src="images/defaut.png">'
-            + '<?php } ?>'
-            + '</div>'
+            + '<div class="col-sm-3">';
+        if (tmp.emetteur.avatar) {
+            string += '<img class="img-responsive" src="' + tmp.emetteur.avatar + '">';
+        } else {
+            string += '<img class="img-responsive" src="images/defaut.png">';
+        }
+        string += '</div>'
             + '<div class="col-sm-9">'
             + '<div class="row">'
             + '<div class="col-sm-3">'
             + '<h6>De :'
-            + '<?php echo $message->getEmetteur()->getNom(); ?>'
-            + '<?php echo $message->getEmetteur()->getPrenom(); ?>'
+            + tmp.emetteur.nom
+            + tmp.emetteur.prenom
             + '</h6>'
-            + '<?php if ($message->getDestinataire() && $message->getEmetteur()) { ?>'
-            + '<?php if ($message->getDestinataire()->getId() !== $message->getEmetteur()->getId()) { ?>'
-            + '<h6>'
-            + 'à'
-            + '<?php echo $message->getDestinataire()->getNom(); ?>'
-            + '<?php echo $message->getDestinataire()->getPrenom(); ?>'
-            + '</h6>'
-            + '<?php } ?>'
-            + '<?php } ?>'
-            + '</div>'
+        if (tmp.destinataire && tmp.emetteur) {
+            if (tmp.destinataire.id !== tmp.emetteur.id) {
+                string += '<h6>'
+                    + 'à'
+                    + tmp.destinataire.nom
+                    + tmp.destinataire.prenom
+                    + '</h6>';
+            }
+        }
+        string += '</div>'
             + '<div class="col-sm-9">'
-            + '<p><?php echo $message->getPost()->getTexte(); ?></p>'
-            + '<?php if (!empty($message->getPost()->getImage())) { ?>'
-            + '<img class="img-responsive" src="<?php echo $message->getPost()->getImage(); ?>">'
-            + '<?php } ?>'
-            + '</div>'
+            + '<p>' + tmp.post.texte + '</p>';
+        if (tmp.post.image) {
+            string += '<img class="img-responsive" src="' + tmp.post.image + '">';
+        }
+        string += '</div>'
             + '</div>'
             + '</div>'
             + '</div>'
             + '<div class="row">'
             + '<div class="col-sm-3 col-sm-push-9">'
-            + '<button id="like-<?php echo $message->getId(); ?>" class="btn btn-danger">'
-            + '<?php echo empty($message->getAime()) ? 0 : $message->getAime(); ?>'
-            + '</button>'
-            + '<button id="partage-<?php echo $message->getId(); ?>" class="btn btn-primary">'
+            + '<button id="like-' + tmp.id + '" class="btn btn-danger">';
+        tmp.aime ? string += 0 : string += tmp.aime;
+        string += '</button>'
+            + '<button id="partage-' + tmp.id + '" class="btn btn-primary">'
             + 'Partager'
             + '</button>'
             + '</div>'
             + '</div>'
-            + '</div>');
+            + '</div>';
+        $('#new-message').prepend(string);
     }
 }

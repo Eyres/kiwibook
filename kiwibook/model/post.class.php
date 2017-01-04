@@ -4,7 +4,7 @@
  * @Entity
  * @Table(name="fredouil.post")
  */
-class post {
+class post implements JsonSerializable{
 
 	/** @Id @Column(type="integer") @GeneratedValue */
 	protected $id;
@@ -18,6 +18,11 @@ class post {
     /** @Column(type="string", length=200) */
 	protected $image;
 
+
+    public function jsonSerialize()
+    {
+        return json_encode(get_object_vars($this));
+    }
     /**
      * @return mixed
      */

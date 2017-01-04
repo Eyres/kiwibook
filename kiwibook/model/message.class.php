@@ -5,7 +5,7 @@
  * @Table(name="fredouil.message")
  *
  */
-class message {
+class message implements JsonSerializable{
 
 	/** @Id @Column(type="integer") @GeneratedValue */
 	protected $id;
@@ -36,6 +36,11 @@ class message {
      * @JoinColumn(nullable=false, name="post", referencedColumnName="id")
      */
 	protected $post;
+
+    public function jsonSerialize()
+    {
+        return json_encode(get_object_vars($this));
+    }
 
     /**
      * @return mixed

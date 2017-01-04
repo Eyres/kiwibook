@@ -4,7 +4,7 @@
  * @Entity
  * @Table(name="fredouil.utilisateur")
  */
-class utilisateur
+class utilisateur implements JsonSerializable
 {
 
     /** @Id @Column(type="integer") @GeneratedValue */
@@ -30,6 +30,11 @@ class utilisateur
 
     /** @Column(type="datetime") */
     protected $date_de_naissance;
+
+    public function jsonSerialize()
+    {
+        return json_encode(get_object_vars($this));
+    }
 
     /**
      * @return mixed
