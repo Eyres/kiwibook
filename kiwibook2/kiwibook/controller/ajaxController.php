@@ -6,8 +6,6 @@
  */
 class AjaxController
 {
-    const LIMIT = 20;
-
     /**
      * @param $request
      * @param Context $context

@@ -6,46 +6,8 @@
 
 class utilisateurTable
 {
-	protected $utilisateurRepository;
-	protected $em;
-
-	/**
-	 * @return \Doctrine\ORM\EntityManager|null
-	 */
-	public function getEm()
-	{
-		return $this->em;
-	}
-
-	/**
-	 * @param \Doctrine\ORM\EntityManager|null $em
-	 * @return utilisateurTable
-	 */
-	public function setEm($em)
-	{
-		$this->em = $em;
-
-		return $this;
-	}
-
-	/**
-	 * @return \Doctrine\ORM\EntityRepository
-	 */
-	public function getUtilisateurRepository()
-	{
-		return $this->utilisateurRepository;
-	}
-
-	/**
-	 * @param \Doctrine\ORM\EntityRepository $utilisateurRepository
-	 * @return utilisateurTable
-	 */
-	public function setUtilisateurRepository($utilisateurRepository)
-	{
-		$this->utilisateurRepository = $utilisateurRepository;
-
-		return $this;
-	}
+    public $utilisateurRepository;
+    public $em;
 
 // @author simon vivier
 	public function __construct()

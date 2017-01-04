@@ -16,7 +16,7 @@
                 <?php if ($context::getSessionAttribute('id')) { ?>
                     <li class="active"><a href="?action=profil">Profil</a></li>
                     <li><a href="?action=showUsers">Liste d'amis</a>
-                    <li><a href="?action=showMessage">Mur</a></li>
+                    <li><a href="?action=mur">Mur</a></li>
                     <li><a href="#" id="chat-button-window">Chat</a></li>
                 <?php } ?>
             </ul>

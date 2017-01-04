@@ -5,3 +5,7 @@ input {
 .dropdown-menu {
     min-width: 250px!important;
 }
+
+#texte {
+    max-width: 400px;
+}
