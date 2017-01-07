@@ -29,6 +29,7 @@ if ($view == false) {
     $template_view = $nameApp."/view/".$action."/".$action.$view.".php";
     include($nameApp."/view/".$context->getLayout().".php");
 } else {
+
     echo $view;
 }
 ?>

@@ -53,4 +53,55 @@ class mainController
         }
     }
 
+    public static function profil($request, $context)
+    {
+        if ($context->getSessionAttribute('id')) {
+            $utilisateurTable = new utilisateurTable();
+            if (array_key_exists('id', $request)) {
+                $context->data = $utilisateurTable->getUserByID($request['id']);
+                $context->userId = $request['id'];
+            } else {
+                $context->data = $utilisateurTable->getUserByID($context->getSessionAttribute('id'));
+                $context->userId = $context->getSessionAttribute('id');
+            }
+
+            return Context::SUCCESS;
+        }
+    }
+
+    public static function editProfil($request, $context)
+    {
+        if ($context->getSessionAttribute('id')) {
+
+            if (array_key_exists('statut', $request) && $_FILES !== null) {
+                $utilisateurTable = new utilisateurTable();
+                $user = $utilisateurTable->getUserByID($context->getSessionAttribute('id'));
+
+                if ($_REQUEST['statut'] !== '') {
+                    $user->setStatut($_REQUEST['statut']);
+                }
+
+                if ($_FILES['avatar']['error'] === 0 && $_FILES['avatar']['name'] !== "") {
+                    $image = 'https://pedago.univ-avignon.fr/~uapv1401701/kiwibook/image/'.$_FILES['avatar']['name'];
+                    $folder = 'image/';
+                    $tmp = time();
+                    $infosFichier = pathinfo($_FILES['avatar']['name']);
+                    $extensionUpload = $infosFichier['extension'];
+                    $extensionsAutorisees = array('jpg', 'jpeg', 'gif', 'png');
+                    if (in_array($extensionUpload, $extensionsAutorisees)) {
+                        $image .= $_FILES['avatar']['name'].$tmp.'.'.$extensionUpload;
+                        move_uploaded_file(
+                            $_FILES['avatar']['tmp_name'],
+                            $folder.$_FILES['avatar']['name'].$tmp.'.'.$extensionUpload
+                        );
+                        $user->avatar = $image;
+                    }
+                }
+                $utilisateurTable->update($user);
+                $context->redirect('?action=profil');
+            }
+        }
+        return Context::SUCCESS;
+    }
+
 }
