@@ -3,7 +3,6 @@
 
 class mainController
 {
-
     public static function index($request, $context)
     {
         return context::SUCCESS;

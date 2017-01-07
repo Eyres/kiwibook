@@ -9,7 +9,6 @@ $(document).ready(function () {
             }
         });
     });
-    chatIni();
 
     var offset = 10;
     $("#plus-de-post").click(function () {
@@ -33,6 +32,7 @@ $(document).ready(function () {
             }
         });
     });
+    chatIni();
 });
 
 function chatIni() {
