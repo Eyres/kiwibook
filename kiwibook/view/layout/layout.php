@@ -13,7 +13,8 @@
     <?php include('menu.php'); ?>
 	<?php include('bandeauNotif.php'); ?>
 	<?php include($template_view); ?>
-    
+	<?php include('chat.php'); ?>
+
 </body>
 
 <script src="js/jquery.js"></script>
