@@ -11,7 +11,6 @@ function chatEnvoyer() {
             url: '?action=envoyerChat',
             success: function (reponse) {
                 $('#message').val('');
-                console.log(reponse);
                 creerLesChats(reponse);
             }
         });

@@ -1,5 +1,5 @@
 <div class="row">
-    <form name="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <form name="form" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label title="texte" class="col-sm-3 control-label required" for="texte">
                 Votre texte
@@ -22,6 +22,9 @@
         </div>
     </form>
 </div>
+
+<div class="container-fluid" id="target-post">
+
 <?php foreach ($context->__get('message') as $message) { ?>
     <?php if (!empty($message->getEmetteur())) { ?>
         <div class="wrapper">

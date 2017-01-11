@@ -34,6 +34,13 @@ class messageTable
     {
         return $this->messageRepository->findBy([], ['id' => 'DESC'], $limit, $offset);
     }
+
+    public function create($message)
+    {
+        $this->em->persist($message);
+        $this->em->flush();
+    }
+
 }
 
 ?>

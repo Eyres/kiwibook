@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    murEnvoyer();
+
     $("body").on("click", "#logout", function () {
         $.ajax({
             dataType: 'json',
@@ -9,7 +11,6 @@ $(document).ready(function () {
             }
         });
     });
-
     var offset = 10;
     $("#plus-de-post").click(function () {
         $.ajax({
@@ -117,5 +118,48 @@ function appendMessages(messages) {
             + '</div>'
             + '</div>';
         $('#new-message').prepend(string);
+    }
+}
+
+function murEnvoyer() {
+    $('#texte-submit').click(function () {
+        $.ajax({
+            dataType: 'json',
+            data: {message: $.trim($('#texte').val())},
+            url: '?action=envoyerPost',
+            success: function (reponse) {
+                $('#texte').val('');
+                creerLesPosts(reponse);
+            }
+        });
+    });
+}
+
+
+function creerLesPosts(reponse) {
+    console.log(reponse);
+    var string = '';
+    var post = '';
+    for (var i = (reponse.data.message.length - 1); i > -1; i--) {
+        post = JSON.parse(reponse.data.message[i]);
+        post.emetteur = JSON.parse(post.emetteur);
+        post.post = JSON.parse(post.post);
+        if (post != null) {
+            string = '';
+            string = "<div class='row'>"
+                + "<div class='col-sm-4'>"
+                + "<p>"
+                + post.emetteur.prenom + " " + post.emetteur.nom
+                + "</p>"
+                + "</div>"
+                + "<div class='col-sm-8'>"
+                + "<p>"
+                + post.post.texte
+                + "</p>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
+            $('#target-post').prepend(string);
+        }
     }
 }
