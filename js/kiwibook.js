@@ -32,21 +32,7 @@ $(document).ready(function () {
             }
         });
     });
-    chatIni();
 });
-
-function chatIni() {
-    $('#chat-window').dialog({
-        title: "Chat",
-        autoOpen: false,
-        width: 600,
-        height: 300
-    });
-    $('#chat-button-window').click(function () {
-        $("#chat-window").dialog("open");
-        $("#chat-window").toggleClass('hidden');
-    });
-}
 
 function appendAmis(messages) {
     for (var i = 0; i < messages.length; i++) {

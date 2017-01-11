@@ -34,7 +34,6 @@ class messageTable
     {
         return $this->messageRepository->findBy([], ['id' => 'DESC'], $limit, $offset);
     }
-
 }
 
 ?>

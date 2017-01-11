@@ -28,14 +28,22 @@ class chatTable
     /**
      * Permet de récupérer le dernier message posté sur le chat
      * @author Estelle Corsetti
+     * @param null $limit
      * @return array Un objet de type chat
      */
-    public function getLastChats()
+    public function getLastChats($limit = null)
     {
-        return $this->chatsRepository->findBy([], ['id' => 'DESC']);
+        return $this->chatsRepository->findBy([], ['id' => 'DESC'], $limit);
     }
 
-
+    /**
+     * @param $chat
+     */
+    public function create($chat)
+    {
+        $this->em->persist($chat);
+        $this->em->flush();
+    }
 }
 
 ?>
