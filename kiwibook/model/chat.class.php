@@ -4,7 +4,7 @@
  * @Entity
  * @Table(name="fredouil.chat")
  *
- * @author
+ * @author Estelle Corsetti
  */
 class chat implements JsonSerializable
 {

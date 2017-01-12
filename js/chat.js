@@ -1,3 +1,7 @@
+/**
+ * @author Estelle Corsetti
+ */
+
 $(document).ready(function () {
     chatIni();
     chatEnvoyer();

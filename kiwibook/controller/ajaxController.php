@@ -10,6 +10,7 @@ class AjaxController
      * @param $request
      * @param context $context
      * @return mixed
+     * @author Estelle Corsetti
      */
     public function logout($request, $context)
     {
@@ -23,6 +24,7 @@ class AjaxController
      * @param $request
      * @param context $context
      * @return mixed
+     * @author Simon Vivier
      */
     public function loadMessage($request, $context)
     {
@@ -36,6 +38,7 @@ class AjaxController
      * @param $request
      * @param context $context
      * @return mixed
+     * @author Simon Vivier
      */
     public function loadAmis($request, $context)
     {
@@ -49,6 +52,8 @@ class AjaxController
      * @param $request
      * @param context $context
      * @return mixed
+     *
+     * @author Estelle Corsetti
      */
     public function loadChat($request, $context)
     {
@@ -62,6 +67,7 @@ class AjaxController
      * @param $request
      * @param context $context
      * @return mixed
+     * @author Estelle Corsetti
      */
     public function envoyerChat($request, $context)
     {
@@ -85,6 +91,7 @@ class AjaxController
      * @param $request
      * @param context $context
      * @return mixed
+     * @author Simon Vivier
      */
     public function envoyerPost($request, $context)
     {

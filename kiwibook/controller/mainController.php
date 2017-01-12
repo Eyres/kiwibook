@@ -30,6 +30,13 @@ class mainController
         return Context::SUCCESS;
     }
 
+    /**
+     * @param $request
+     * @param $context
+     * @return string
+     *
+     * @author Estelle Corsetti
+     */
     public static function mur($request, $context)
     {
         if ($context::getSessionAttribute('id')) {
@@ -41,6 +48,13 @@ class mainController
         }
     }
 
+    /**
+     * @param $request
+     * @param $context
+     * @return string
+     *
+     * @author Simon Vivier
+     */
     public static function amis($request, $context)
     {
         if ($context::getSessionAttribute('id')) {
@@ -52,6 +66,13 @@ class mainController
         }
     }
 
+    /**
+     * @param $request
+     * @param $context
+     * @return string
+     *
+     * @author Simon Vivier
+     */
     public static function profil($request, $context)
     {
         if ($context->getSessionAttribute('id')) {
@@ -68,6 +89,13 @@ class mainController
         }
     }
 
+    /**
+     * @param $request
+     * @param $context
+     * @return string
+     *
+     * @author Estelle Corsetti
+     */
     public static function editProfil($request, $context)
     {
         if ($context->getSessionAttribute('id')) {

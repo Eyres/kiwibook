@@ -4,6 +4,11 @@
 	composée de méthodes statiques
 */
 
+/**
+ * Class chatTable
+ *
+ * @author Estelle Corsetti
+ */
 class chatTable
 {
     public $em;

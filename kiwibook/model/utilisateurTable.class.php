@@ -4,6 +4,11 @@
 	composée de méthodes statiques
 */
 
+/**
+ * Class utilisateurTable
+ *
+ * * @author Simon vivier
+ */
 class utilisateurTable
 {
     public $utilisateurRepository;
